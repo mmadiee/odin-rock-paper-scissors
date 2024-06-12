@@ -16,8 +16,10 @@ body {
 .col {
     width: 130px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: large;
 }
 
 .title {
@@ -33,12 +35,17 @@ body {
     align-items: center;
     margin-left: 100px;
     margin-right: 100px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .result-box{
-    padding: 100px;
+    width: 250px;
+    height: 200px;
     border: 1px solid rgb(187, 110, 22);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .left, .right, .middle{
@@ -58,10 +65,15 @@ button{
     background-color: rgb(187, 110, 22);
     color: rgb(247, 247, 197);
     transition: 0.5s;
+    
 }
 
-.btn-human:hover {
+.btn-human:hover, .highlight {
     border: 5px solid saddlebrown;
     font-size: larger;
-
 }
+
+.btn-human{
+    cursor: pointer;
+}
+

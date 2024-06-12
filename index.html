@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rock Paper Scissors</title>
-  <script src="rps.js" defer></script>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="title">
-    <h1> 👊✋✌️ Rock Paper Scissors ✌️✋👊</h1>
-  </div>
-  <div class="score-board">
-    <div class="col">
-      <h3>HUMAN</h3>
-      <div id="human-score">0</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <script src="rps.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="title">
+      <h1>👊✋✌️ Rock Paper Scissors ✌️✋👊</h1>
     </div>
-    <div class="col">
-      <h3>ROUND</h3>
-      <div id="round">1</div>
+    <div class="score-board">
+      <div class="col">
+        <h3>HUMAN</h3>
+        <div id="human-score">0</div>
+      </div>
+      <div class="col">
+        <h3>ROUND</h3>
+        <div id="round">1</div>
+      </div>
+      <div class="col">
+        <h3>COMPUTER</h3>
+        <div id="computer-score">0</div>
+      </div>
     </div>
-    <div class="col">
-      <h3>COMPUTER</h3>
-      <div id="computer-score">0</div>
+    <div class="main">
+      <div class="left">
+        <button onclick="playRound('rock')" class="btn-human">ROCK</button>
+        <button onclick="playRound('paper')" class="btn-human">PAPER</button>
+        <button onclick="playRound('scissor')" class="btn-human">
+          SCISSOR
+        </button>
+      </div>
+      <div class="middle">
+        <div class="result-box">
+          <h3 id="result-box">START</h3>
+        </div>
+      </div>
+      <div class="right">
+        <button id="computer-rock" class="btn-computer">ROCK</button>
+        <button id="computer-paper" class="btn-computer">PAPER</button>
+        <button id="computer-scissor" class="btn-computer">SCISSOR</button>
+      </div>
     </div>
-  </div>
-  <div class="main">
-    <div class="left">
-      <button onclick="playRound('rock')" class="btn-human">ROCK</button>
-      <button onclick="playRound('paper')" class="btn-human">PAPER</button>
-      <button onclick="playRound('scissor')" class="btn-human">SCISSOR</button>
-    </div>
-    <div class="middle">
-      <div class="result-box" id="result-box"></div>
-    </div>
-    <div class="right">
-      <button disabled>ROCK</button>
-      <button disabled>PAPER</button>
-      <button disabled>SCISSOR</button>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

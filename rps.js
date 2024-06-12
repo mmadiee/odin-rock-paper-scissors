@@ -16,24 +16,37 @@ function convertChoice(choice) {
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3) + 1;
-  return convertChoice(choice);
+  const computerChoice = convertChoice(choice);
+
+  document.querySelectorAll('.btn-computer').forEach(button => {
+    button.classList.remove('highlight');
+  });
+
+  if (computerChoice === "rock") {
+    document.getElementById('computer-rock').classList.add('highlight');
+  } else if (computerChoice === "paper") {
+    document.getElementById('computer-paper').classList.add('highlight');
+  } else if (computerChoice === "scissor") {
+    document.getElementById('computer-scissor').classList.add('highlight');
+  }
+
+  return computerChoice;
 }
 
 function playRound(humanChoice) {
   const computerChoice = getComputerChoice();
   const resultBox = document.getElementById('result-box');
-  resultBox.innerHTML = `You chose: ${humanChoice}<br>Computer chose: ${computerChoice}<br>`;
 
   if (humanChoice == computerChoice) {
-    resultBox.innerHTML += "It's a draw!";
+    resultBox.textContent = "It's a draw!";
   } else if ((humanChoice == "rock" && computerChoice == "scissor") ||
              (humanChoice == "paper" && computerChoice == "rock") ||
              (humanChoice == "scissor" && computerChoice == "paper")) {
     humanScore++;
-    resultBox.innerHTML += "You win this round!";
+    resultBox.textContent = "You win this round!";
   } else {
     computerScore++;
-    resultBox.innerHTML += "Computer wins this round!";
+    resultBox.textContent = "Computer wins this round!";
   }
 
   updateScores();
@@ -41,25 +54,36 @@ function playRound(humanChoice) {
 }
 
 function updateScores() {
-  document.getElementById('human-score').innerText = humanScore;
-  document.getElementById('computer-score').innerText = computerScore;
-  document.getElementById('round').innerText = round++;
+  document.getElementById('human-score').textContent = humanScore;
+  document.getElementById('computer-score').textContent = computerScore;
+  document.getElementById('round').textContent = round++;
 }
 
 function checkWinner() {
+  const resultBox = document.getElementById('result-box');
   if (humanScore === 5) {
-    alert("Congrats, you win the game!");
-    resetGame();
+    resultBox.textContent = "Congrats, you win the game!";
+    setTimeout(() => {
+      alert("Congrats, you win the game!");
+      resetGame();
+    }, 100); // Short delay to allow UI update
   } else if (computerScore === 5) {
-    alert("The computer beat you :(");
-    resetGame();
+    resultBox.textContent = "The computer beat you :(";
+    setTimeout(() => {
+      alert("The computer beat you :(");
+      resetGame();
+    }, 100); // Short delay to allow UI update
   }
 }
+
 
 function resetGame() {
   humanScore = 0;
   computerScore = 0;
   round = 1;
   updateScores();
-  document.getElementById('result-box').innerHTML = "";
+  document.querySelectorAll('.btn-computer').forEach(button => {
+    button.classList.remove('highlight');
+  });
+  document.getElementById('result-box').textContent = "START";
 }
